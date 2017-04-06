@@ -10,44 +10,47 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        int lineNum = scanner.nextInt();
-        int outNum = scanner.nextInt();
-        Map<String,Line> result = new HashMap<>();
-        for (int i = 0; i < lineNum; i++) {
-            String type = scanner.next();
-            int price = scanner.nextInt();
-            int amount = scanner.nextInt();
-            String key = type+price;
-            Line  line = new Line(type,price,amount);
-            if(result.containsKey(key)){
-                Line line_ = result.get(key);
-                line.setAmout(line.getAmout()+line_.getAmout());
+        while (scanner.hasNext()) {
+            int lineNum = scanner.nextInt();
+            int outNum = scanner.nextInt();
+            Map<String, Line> result = new HashMap<>();
+            for (int i = 0; i < lineNum; i++) {
+                String type = scanner.next();
+                int price = scanner.nextInt();
+                int amount = scanner.nextInt();
+                String key = type + price;
+                Line line = new Line(type, price, amount);
+                if (result.containsKey(key)) {
+                    Line line_ = result.get(key);
+                    line.setAmout(line.getAmout() + line_.getAmout());
+                }
+                result.put(key, line);
             }
-            result.put(key,line);
-        }
-        Set<String> keys = result.keySet();
-        List<Line> list_S = new ArrayList<>();
-        List<Line> list_B = new ArrayList<>();
-        for (String key : keys) {
-            Line line = result.get(key);
-            if("S".equals(line.getType())){
-                list_S.add(line);
-            }else{
-                list_B.add(line);
+            Set<String> keys = result.keySet();
+            List<Line> list_S = new ArrayList<>();
+            List<Line> list_B = new ArrayList<>();
+            for (String key : keys) {
+                Line line = result.get(key);
+                if ("S".equals(line.getType())) {
+                    list_S.add(line);
+                } else {
+                    list_B.add(line);
+                }
+            }
+            Collections.sort(list_B);
+            Collections.sort(list_S);
+            for (int i = 0; i < outNum; i++) {
+                System.out.println(list_S.get(i));
+            }
+            for (int i = 0; i < outNum; i++) {
+                System.out.println(list_B.get(i));
             }
         }
-        Collections.sort(list_B);
-        Collections.sort(list_S);
-        for (int i = 0; i < outNum; i++) {
-            System.out.println(list_S.get(i));
-        }
-        for (int i = 0; i < outNum; i++) {
-            System.out.println(list_B.get(i));
-        }
+
     }
 }
 
-class Line implements  Comparable<Line>{
+class Line implements Comparable<Line> {
     String type;
     int price;
     int amout;
@@ -84,10 +87,10 @@ class Line implements  Comparable<Line>{
 
     @Override
     public int compareTo(Line o) {
-        if(amout<o.getAmout()){
+        if (amout < o.getAmout()) {
             return 1;
         }
-        if(amout>o.getAmout()){
+        if (amout > o.getAmout()) {
             return -1;
         }
         return 0;
@@ -95,6 +98,6 @@ class Line implements  Comparable<Line>{
 
     @Override
     public String toString() {
-        return type+" "+price+" "+amout;
+        return type + " " + price + " " + amout;
     }
 }
