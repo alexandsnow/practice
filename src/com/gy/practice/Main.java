@@ -39,10 +39,10 @@ public class Main {
             }
             Collections.sort(list_B);
             Collections.sort(list_S);
-            for (int i = 0; i < outNum; i++) {
+            for (int i = 0; i < outNum  && i<list_S.size(); i++) {
                 System.out.println(list_S.get(i));
             }
-            for (int i = 0; i < outNum; i++) {
+            for (int i = 0; i < outNum  && i<list_B.size(); i++) {
                 System.out.println(list_B.get(i));
             }
         }
