@@ -1,9 +1,6 @@
 package com.gy.practice;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by alex on 2017/4/6.
@@ -23,12 +20,22 @@ public class optimization {
             }
             Collections.sort(candyinfos);
 
+            List<Integer> ids = new ArrayList<>();
+
+            int cost=0;
             for (CandyInfo candyinfo : candyinfos) {
                 if (candyinfo.getVolume() <= volume && volume >= 0) {
                     volume = volume - candyinfo.getVolume();
-                    System.out.println(candyinfo.getId()+" ");
+                    cost = cost+candyinfo.getCapacity();
+                    ids.add(candyinfo.getId());
                 }
             }
+            System.out.println(cost);
+            Collections.sort(ids);
+            for (Integer id : ids) {
+                System.out.print(id+" ");
+            }
+            System.out.println();
 
         }
 
