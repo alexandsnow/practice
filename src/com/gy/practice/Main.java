@@ -39,14 +39,13 @@ public class Main {
             }
             Collections.sort(list_B);
             Collections.sort(list_S);
-            for (int i = 0; i < outNum  && i<list_S.size(); i++) {
+            for (int i = 0; i < outNum && i < list_S.size(); i++) {
                 System.out.println(list_S.get(i));
             }
-            for (int i = 0; i < outNum  && i<list_B.size(); i++) {
+            for (int i = 0; i < outNum && i < list_B.size(); i++) {
                 System.out.println(list_B.get(i));
             }
         }
-
     }
 
 }
@@ -88,13 +87,7 @@ class Line implements Comparable<Line> {
 
     @Override
     public int compareTo(Line o) {
-        if (amout < o.getAmout()) {
-            return 1;
-        }
-        if (amout > o.getAmout()) {
-            return -1;
-        }
-        return 0;
+        return o.price-this.price;
     }
 
     @Override
