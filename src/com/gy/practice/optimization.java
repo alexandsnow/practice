@@ -15,7 +15,7 @@ public class optimization {
             for (int i = 0; i < num; i++) {
                 int v = scanner.nextInt();
                 int capacity = scanner.nextInt();
-                CandyInfo candyInfo = new CandyInfo(i, v, capacity);
+                CandyInfo candyInfo = new CandyInfo(i+1, v, capacity);
                 candyinfos.add(candyInfo);
             }
             Collections.sort(candyinfos);
